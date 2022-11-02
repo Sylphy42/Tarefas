@@ -12,7 +12,7 @@ char* readline(FILE *data){
             size += 10;
             line = realloc(line, sizeof(char) * size);
         }
-    }while( line[i-1] != '\n' && line[i-1] != '\r' && *line[i-1] != '\n\r');
+    }while( line[i-1] != '\n' && line[i-1] != '\r'  && line[i-1] != EOF );
 
     line[i] = '\0';
     return line;
@@ -22,7 +22,8 @@ int main(int argc, char **argv){
   FILE *arquivo = fopen(argv[1], "r");
 
   char *line = readline(arquivo);
-  printf("%s\n", line);
+  printf("%s", line);
+
 
   line = readline(arquivo);
   printf("%s\n", line);
@@ -32,7 +33,3 @@ int main(int argc, char **argv){
 
   line = readline(arquivo);
   printf("%s\n", line);
-
-  line = readline(arquivo);
-  printf("%s\n", line);
-}
